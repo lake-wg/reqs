@@ -264,7 +264,7 @@ Assuming that both signature public keys and static DH public keys are in use, t
 
 ## Mutual Authentication {#mutual-auth}
 
-The AKE must provide mutual authentication during the protocol run. At the end of the AKE protocol, each endpoint shall have authenticated the other's credential. In particular, both endpoints must agree on a fresh session identifier, and the roles and credentials of both endpoints.
+The AKE must provide mutual authentication during the protocol run. At the end of the AKE protocol, each endpoint shall have freshly authenticated the other's credential. In particular, both endpoints must agree on a fresh session identifier, and the roles and credentials of both endpoints. 
 
 Since the protocol may be initiated by different endpoints, it shall not be necessary to determine beforehand which endpoint takes the role of initiator of the AKE.
 
@@ -277,8 +277,6 @@ The mutual authentication guarantees of the AKE shall at least guarantee the fol
 * The AKE shall protect against reflection attacks, but need not protect against attacks when more than two parties legitimately share keys (cf. the Selfie attack on TLS 1.3 {{Selfie}}) as that setting is out of scope.
 
 Replayed messages shall not affect the security of an AKE session.
-
-Furthermore, the endpoints shall be able to verify that the identity of the other endpoint is an acceptable identity that it is intended to authenticate to. (This requirement extends beyond the AKE in that the application must enable access to information about acceptable identities without compromising the overall lightweightness of the AKE.)
 
 As often is the case, it is expected that an AKE fulfilling these goals would have at least three flights of messages (with each flight potentially consisting of one or more messages, depending on the AKE design and the mapping to OSCORE).
 
