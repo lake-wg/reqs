@@ -265,7 +265,7 @@ Assuming that both signature public keys and static DH public keys are in use, t
 
 ### Initial Focus {#initial-focus}
 
-As illustrated above, the setting is much more diverse in terms of credentials and trust anchors than that of the unconstrained web. In order to deliver a timely result, there is a need to initially focus on what is considered most important at the time of writing: RPK (by reference and value) and certificate by reference.
+As illustrated above, the setting is much more diverse in terms of credentials and trust anchors than that of the unconstrained web. In order to deliver a timely result, there is a need to initially focus on what is considered most important at the time of writing: RPK (by reference and value) and certificate by reference. Information about validity of a certificate may be omitted from the AKE if available over unconstrained links. The case of transporting certificate validation information over the AKE may be specified in the initial phase if there is a lightweight solution that matches existing standards and tools.
 
 A subsequent extension beyond the initial focus may be inevitable to maintain a homogenous deployment without having to implement a mix of AKE protocols, for example, to support the migration path described above. The AKE needs to make clear the scope of cases analysed in the initial phase, and that a new analysis is required for additional cases. 
 
