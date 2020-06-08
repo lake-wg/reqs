@@ -5,24 +5,24 @@
 Network Working Group                                         M. Vucinic
 Internet-Draft                                                     Inria
 Intended status: Informational                               G. Selander
-Expires: 31 October 2020                                     J. Mattsson
+Expires: 10 December 2020                                    J. Mattsson
                                                              Ericsson AB
                                                                D. Garcia
                                                      Odin Solutions S.L.
-                                                           29 April 2020
+                                                             8 June 2020
 
 
              Requirements for a Lightweight AKE for OSCORE
-                        draft-ietf-lake-reqs-02
+                        draft-ietf-lake-reqs-04
 
 Abstract
 
    This document compiles the requirements for a lightweight
-   authenticated key exchange protocol for OSCORE.  This draft is in a
-   working group last call (WGLC) in the LAKE working group.  Post-WGLC,
-   the requirements will be considered sufficiently stable for the
-   working group to proceed with its work.  It is not currently planned
-   to publish this draft as an RFC.
+   authenticated key exchange protocol for OSCORE.  This draft has
+   completed a working group last call (WGLC) in the LAKE working group.
+   Post-WGLC, the requirements are considered sufficiently stable for
+   the working group to proceed with its work.  It is not currently
+   planned to publish this draft as an RFC.
 
 Status of This Memo
 
@@ -39,7 +39,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 31 October 2020.
+   This Internet-Draft will expire on 10 December 2020.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Vucinic, et al.          Expires 31 October 2020                [Page 1]
+Vucinic, et al.         Expires 10 December 2020                [Page 1]
 
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
 
 
    and restrictions with respect to this document.  Code Components
@@ -69,21 +69,21 @@ Table of Contents
    2.  Problem description . . . . . . . . . . . . . . . . . . . . .   3
      2.1.  AKE for OSCORE  . . . . . . . . . . . . . . . . . . . . .   3
      2.2.  Credentials . . . . . . . . . . . . . . . . . . . . . . .   4
-     2.3.  Mutual Authentication . . . . . . . . . . . . . . . . . .   6
+     2.3.  Mutual Authentication . . . . . . . . . . . . . . . . . .   7
      2.4.  Confidentiality . . . . . . . . . . . . . . . . . . . . .   7
      2.5.  Cryptographic Agility and Negotiation Integrity . . . . .   8
      2.6.  Cryptographic Strength  . . . . . . . . . . . . . . . . .   9
      2.7.  Identity Protection . . . . . . . . . . . . . . . . . . .   9
-     2.8.  Auxiliary Data  . . . . . . . . . . . . . . . . . . . . .   9
-     2.9.  Extensibility . . . . . . . . . . . . . . . . . . . . . .  10
+     2.8.  Auxiliary Data  . . . . . . . . . . . . . . . . . . . . .  10
+     2.9.  Extensibility . . . . . . . . . . . . . . . . . . . . . .  11
      2.10. Availability  . . . . . . . . . . . . . . . . . . . . . .  11
      2.11. Lightweight . . . . . . . . . . . . . . . . . . . . . . .  11
-   3.  Security Considerations . . . . . . . . . . . . . . . . . . .  20
-   4.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  20
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  20
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  20
-   Informative References  . . . . . . . . . . . . . . . . . . . . .  20
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  24
+   3.  Security Considerations . . . . . . . . . . . . . . . . . . .  21
+   4.  Privacy Considerations  . . . . . . . . . . . . . . . . . . .  21
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  21
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  21
+   Informative References  . . . . . . . . . . . . . . . . . . . . .  21
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  25
 
 1.  Introduction
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Vucinic, et al.          Expires 31 October 2020                [Page 2]
+Vucinic, et al.         Expires 10 December 2020                [Page 2]
 
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
 
 
    *  The IETF LPWAN WG charter identifies the need to improve the
@@ -159,17 +159,19 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
 
    *  OSCORE Sender IDs of peer endpoints, arbitrarily short.
 
+
+
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020                [Page 3]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
       -  Sender IDs are expected to be unique for a given Master Secret,
          more precisely the quartet (Master Secret, Master Salt, ID
-
-
-
-
-Vucinic, et al.          Expires 31 October 2020                [Page 3]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
          Context, Sender ID) must be unique, see Section 3.3. of
          [RFC8613].
 
@@ -216,15 +218,16 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    used in a first deployment because of their perceived simplicity.
    The use of PSKs allows for protection of communication without major
    additional security processing, and also enables the use of symmetric
+
+
+
+Vucinic, et al.         Expires 10 December 2020                [Page 4]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
    crypto algorithms only, reducing the implementation and computational
    effort in the endpoints.
-
-
-
-Vucinic, et al.          Expires 31 October 2020                [Page 4]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
 
    However, PSK-based provisioning has inherent weaknesses.  There has
    been reports of massive breaches of PSK provisioning systems
@@ -271,17 +274,17 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    rather than by value.  Considering the wide variety of deployments,
    the AKE must support different schemes for transporting and
    identifying credentials.  While there are many existing mechanisms
+
+
+
+Vucinic, et al.         Expires 10 December 2020                [Page 5]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
    for doing so, ranging from PSK to raw public key by reference to
    x5chain of in-band certificates [I-D.ietf-cose-x509], what is
    appropriate for a given deployment will depend on the nature of that
-
-
-
-Vucinic, et al.          Expires 31 October 2020                [Page 5]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
    deployment.  In order to provide a clear initial effort,
    Section 2.2.1 lists a set of credential types of immediate relevance;
    the mechanism for selecting credential scheme is presumed to enable
@@ -320,6 +323,21 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    the initial phase, and that a new analysis is required for additional
    cases.
 
+   The initial scope as described in this subsection does not cover all
+   credentials as detailed previously in Section 2.2: an AKE which is
+   extensible but does not include PSK ECDHE would be conformant with
+   the requirements for the initial scope.  A solution to the
+   requirements for the initial scope is intended to be a deliverable of
+   the LAKE WG.
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020                [Page 6]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
 2.3.  Mutual Authentication
 
    The AKE must provide mutual authentication during the protocol run.
@@ -329,15 +347,6 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    credentials of both endpoints.
 
    Since the protocol may be initiated by different endpoints, it shall
-
-
-
-
-Vucinic, et al.          Expires 31 October 2020                [Page 6]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
    not be necessary to determine beforehand which endpoint takes the
    role of initiator of the AKE.
 
@@ -377,6 +386,14 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    (Perfect Forward Secrecy, PFS).  These properties can be achieved,
    e.g., with an ephemeral Diffie-Hellman key exchange.
 
+
+
+
+Vucinic, et al.         Expires 10 December 2020                [Page 7]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
    PFS may also be achieved in other ways, for example, using hash-based
    ratcheting or with a nonce exchange followed by appropriately derived
    new session keys provided that state can be kept in the form of a
@@ -385,15 +402,6 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
 
    The AKE shall provide a mechanism to use the output of one handshake
    to optimize future handshakes, e.g., by generating keying material
-
-
-
-
-Vucinic, et al.          Expires 31 October 2020                [Page 7]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
    which can be used to authenticate a future handshake, thus avoiding
    the need for public key authentication in that handshake.
 
@@ -434,21 +442,19 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
       length of the MAC for the AKE may be required to be larger than
       for OSCORE.
 
+
+
+
+Vucinic, et al.         Expires 10 December 2020                [Page 8]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
    The AKE negotiation must provide strong integrity guarantees against
    active attackers.  At the end of the AKE protocol, both endpoints
    must agree on both the crypto algorithms that were proposed and those
    that were chosen.  In particular, the protocol must protect against
    downgrade attacks.
-
-
-
-
-
-
-Vucinic, et al.          Expires 31 October 2020                [Page 8]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
 
 2.6.  Cryptographic Strength
 
@@ -487,6 +493,19 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    parameters, such as using pre-configured public keys typically adds
    to message overhead.
 
+
+
+
+
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020                [Page 9]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
 2.8.  Auxiliary Data
 
    In order to reduce round trips and the number of flights, and in some
@@ -498,14 +517,6 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    from initiator to responder or vice versa.  Such a scheme could
    enable the party receiving the authorization information to make a
    decision about whether the party being authenticated is also
-
-
-
-Vucinic, et al.          Expires 31 October 2020                [Page 9]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
    authorized before the protocol is completed, and if not then
    discontinue the protocol before it is complete, thereby saving time,
    message processing and data transmission.
@@ -539,6 +550,18 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    *  Auxiliary data in the third flight is confidentiality and
       integrity protected against active attackers
 
+
+
+
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 10]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
 2.9.  Extensibility
 
    It is desirable that the AKE supports some kind of extensibility, in
@@ -554,13 +577,6 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
 
    While remaining extensible, the AKE should avoid optional mechanisms
    which introduce code paths that are less well tested.
-
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 10]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
 
    The AKE should avoid mechanisms where an initiator takes a guess at
    the policy, and when it receives a negative response, must guess,
@@ -587,6 +603,21 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    *  the amount of new code required on end systems which already have
       an OSCORE stack
 
+
+
+
+
+
+
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 11]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
    These properties need to be considered in the context of the use of
    an existing CoAP/OSCORE stack in the targeted networks and
    technologies.  Some properties are difficult to evaluate for a given
@@ -610,14 +641,6 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    interleaved fashion, like e.g. in a "network formation" setting when
    multiple devices connect for the first time.  This latency may not be
    a linear function depending on congestion and the specific radio
-
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 11]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
    technology used.  As these are relatively low data rate networks, the
    latency contribution due to computation is in general not expected to
    be dominant.
@@ -628,6 +651,28 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    possible, since this reduces completion time.  See Section 2.11.4 for
    a discussion about the trade-off between message size and number of
    flights.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 12]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
 
    Per 'power', it is desirable for the transmission of AKE messages and
    crypto to draw as little power as possible.  The best mechanism for
@@ -665,15 +710,6 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    for security protocol engineering and which have a significant
    impact.
 
-
-
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 12]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
 2.11.1.  LoRaWAN
 
    Reflecting deployment reality as of now, we focus on the European
@@ -686,6 +722,14 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    10% depending on the sub-band that is being used, leading to a
    payload split into fragments interleaved with unavailable times.  For
    Europe, the duty cycle is 1% (or smaller).  Although there are
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 13]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
    exceptions from the use of duty cycle, the use of an AKE for
    providing end-to-end security on application layer needs to comply
    with the duty cycle.
@@ -722,14 +766,6 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    level MAC frames and application data.  As a challenging but
    realistic example we assume each message is retransmitted 2 times and
    allow a factor 2-3 for additional air time.  With these assumptions
-
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 13]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
    it is required with a ToA of 4-6 seconds for the uplink protocol
    messages to ensure that the entire burst stays within the 36 seconds
    duty cycle.
@@ -738,6 +774,17 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    cycle limitation through a stop-and-wait operation, which restricts
    the number of bytes to the size of the packets after which duty cycle
    waiting times are incurred.
+
+
+
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 14]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
 
 2.11.1.3.  Round trips and number of flights
 
@@ -774,18 +821,6 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    hops deep is commonplace; a network which is more than 8 hops deep is
    not common.
 
-
-
-
-
-
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 14]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
 2.11.2.1.  Bytes on the wire
 
    Increasing the number of bytes on the wire in a protocol message has
@@ -799,6 +834,14 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    network is "network formation", i.e. the time it takes from switching
    on all devices, until the last device has executed the AKE and
    securely joined.  As a benchmark, given the size limit on the frames
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 15]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
    and taking into account the different headers (including link-layer
    security), for a 6TiSCH network 5 hops deep, the maximum CoAP payload
    size to avoid fragmentation is 47/45 bytes (uplink/downlink)
@@ -835,13 +878,6 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
 
    *  operations in extreme coverage conditions,
 
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 15]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
    *  device battery life of 10 years or more,
 
    *  low device complexity and cost, and
@@ -853,6 +889,14 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
 
    *  Reduced baseband processing, memory and RF enabling low complexity
       device implementation.
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 16]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
 
    *  A lightweight setup minimizing control signaling overhead to
       optimize power consumption.
@@ -889,20 +933,26 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    As indicated in Section 2.11.3.2, the number of frames and round-
    trips is one limiting factor for protocol completion time.
 
-
-
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 16]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
 2.11.3.4.  Power
 
    Since NB-IoT is operating in licensed spectrum, the device is allowed
    to transmit at a relatively high power, which has a large impact on
    the energy consumption.
+
+
+
+
+
+
+
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 17]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
 
    The benchmark for NB-IoT energy consumption is based on the same
    computational model as was used by 3GPP in the design of this radio
@@ -946,20 +996,19 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
 
    There are trade-offs between "few messages" and "few frames"; if
    overhead is spread out over more messages such that each message fits
-
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 17]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
    into a particular frame this may reduce the overall power
    consumption.  For example, with a frame size of 50 bytes, two 60-byte
    messages will fragment into 4 frames in total, whereas three 40-byte
    messages fragment into 3 frames in total.  On the other hand, a
    smaller message has less probability to collide with other messages
    and incur retransmission.
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 18]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
 
    While it may be possible to engineer such a solution for a particular
    radio technology and AKE protocol, optimizing for a specific scenario
@@ -1001,21 +1050,21 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    shall perform optimally with respect to the available criteria for
    the radio technologies.
 
-
-
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 18]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
    To determine with certainty what are the minimal number of fragments
    for an AKE under different assumptions requires to design and analyse
    the AKE, which is clearly beyond the requirements phase.  However, by
    means of an example we have reason to believe that an AKE with 3
    messages can be designed to support RPK by reference in 3 fragments.
    Thus the ideal number of fragments is expected for RPK by reference.
+
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 19]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
 
    While such performance may not be possible for the other initial
    focus cases, it is expected that if one of the peers send RPK by
@@ -1059,18 +1108,19 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    To summarize, even if it we are unable to give precise numbers for
    AKE frequency, a lightweight AKE:
 
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 19]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
    *  reduces the time for network formation and AKE runs in challenging
       radio technologies,
 
    *  allows devices to quickly re-establish security in case of
       reboots, and
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 20]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
 
    *  enables support for recommendations of frequent key renewal.
 
@@ -1117,9 +1167,15 @@ Informative References
 
 
 
-Vucinic, et al.          Expires 31 October 2020               [Page 20]
+
+
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 21]
 
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
 
 
    [I-D.ietf-6tisch-minimal-security]
@@ -1148,17 +1204,16 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
               Minaburo, A., Toutain, L., and R. Andreasen, "LPWAN Static
               Context Header Compression (SCHC) for CoAP", Work in
               Progress, Internet-Draft, draft-ietf-lpwan-coap-static-
-              context-hc-13, 5 March 2020, <http://www.ietf.org/
-              internet-drafts/draft-ietf-lpwan-coap-static-context-hc-
-              13.txt>.
+              context-hc-14, 26 May 2020, <http://www.ietf.org/internet-
+              drafts/draft-ietf-lpwan-coap-static-context-hc-14.txt>.
 
    [I-D.irtf-cfrg-randomness-improvements]
               Cremers, C., Garratt, L., Smyshlyaev, S., Sullivan, N.,
               and C. Wood, "Randomness Improvements for Security
               Protocols", Work in Progress, Internet-Draft, draft-irtf-
-              cfrg-randomness-improvements-11, 14 April 2020,
+              cfrg-randomness-improvements-12, 5 May 2020,
               <http://www.ietf.org/internet-drafts/draft-irtf-cfrg-
-              randomness-improvements-11.txt>.
+              randomness-improvements-12.txt>.
 
    [I-D.selander-ace-ake-authz]
               Selander, G., Mattsson, J., Vucinic, M., Richardson, M.,
@@ -1168,16 +1223,19 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
               <http://www.ietf.org/internet-drafts/draft-selander-ace-
               ake-authz-01.txt>.
 
+
+
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 22]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
    [IANA-COSE-Algorithms]
               "COSE Algorithms", March 2020,
-
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 21]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
               <https://www.iana.org/assignments/cose/
               cose.xhtml#algorithms>.
 
@@ -1224,16 +1282,15 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
    [Misbinding]
               Sethi, M., Peltonen, A., and T. Aura, "Misbinding Attacks
               on Secure Device Pairing and Bootstrapping", Proceedings
-              of the 2019 ACM Asia Conference on Computer and
 
 
 
-
-Vucinic, et al.          Expires 31 October 2020               [Page 22]
+Vucinic, et al.         Expires 10 December 2020               [Page 23]
 
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
 
 
+              of the 2019 ACM Asia Conference on Computer and
               Communications Security , May 2019,
               <https://arxiv.org/pdf/1902.07550.pdf>.
 
@@ -1280,16 +1337,17 @@ Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
               Overview", RFC 8376, DOI 10.17487/RFC8376, May 2018,
               <https://www.rfc-editor.org/info/rfc8376>.
 
+
+
+
+
+Vucinic, et al.         Expires 10 December 2020               [Page 24]
+
+Internet-Draft            Reqs-LAKE-for-OSCORE                 June 2020
+
+
    [RFC8613]  Selander, G., Mattsson, J., Palombini, F., and L. Seitz,
               "Object Security for Constrained RESTful Environments
-
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 23]
-
-Internet-Draft            Reqs-LAKE-for-OSCORE                April 2020
-
-
               (OSCORE)", RFC 8613, DOI 10.17487/RFC8613, July 2019,
               <https://www.rfc-editor.org/info/rfc8613>.
 
@@ -1339,6 +1397,4 @@ Authors' Addresses
 
 
 
-
-
-Vucinic, et al.          Expires 31 October 2020               [Page 24]
+Vucinic, et al.         Expires 10 December 2020               [Page 25]
