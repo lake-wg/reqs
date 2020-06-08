@@ -1,7 +1,7 @@
 ---
 title: Requirements for a Lightweight AKE for OSCORE
 abbrev: Reqs-LAKE-for-OSCORE
-docname: draft-ietf-lake-reqs-02
+docname: draft-ietf-lake-reqs-04
 
 ipr: trust200902
 cat: info
@@ -185,8 +185,8 @@ informative:
 --- abstract
 
 This document compiles the requirements for a lightweight authenticated key exchange protocol for OSCORE. 
-This draft is in a working group last call (WGLC) in the LAKE working group.
-Post-WGLC, the requirements will be considered sufficiently stable for the working group to proceed with its work. 
+This draft has completed a working group last call (WGLC) in the LAKE working group.
+Post-WGLC, the requirements are considered sufficiently stable for the working group to proceed with its work. 
 It is not currently planned to publish this draft as an RFC.
 
 
@@ -269,6 +269,7 @@ As illustrated above, the setting is much more diverse in terms of credentials a
 
 A subsequent extension beyond the initial focus may be inevitable to maintain a homogenous deployment without having to implement a mix of AKE protocols, for example, to support the migration path described above. The AKE needs to make clear the scope of cases analysed in the initial phase, and that a new analysis is required for additional cases. 
 
+The initial scope as described in this subsection does not cover all credentials as detailed previously in {{cred}}: an AKE which is extensible but does not include PSK ECDHE would be conformant with the requirements for the initial scope. A solution to the requirements for the initial scope is intended to be a deliverable of the LAKE WG.
 
 ## Mutual Authentication {#mutual-auth}
 
